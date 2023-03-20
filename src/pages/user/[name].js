@@ -19,7 +19,7 @@ export default function Name() {
         />
       </Head>
       <main>
-        <Nav />
+        <Nav isHome={false} />
         <UserContent />
       </main>
     </>

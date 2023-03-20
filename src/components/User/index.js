@@ -1,11 +1,13 @@
 import { Container, Info, Image, Content } from "./styled";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export function User({ user = "elianapiquets" }) {
   const [githubData, setGithubData] = useState([]);
+  const router = useRouter();
 
   const fetchData = () => {
-    return fetch(`https://api.github.com/users/${user}`, {
+    return fetch(`https://api.github.com/users/${router.query.name}`, {
       headers: {
         Authorization: "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",
         "Content-Type": "application/json",

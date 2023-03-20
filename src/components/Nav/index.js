@@ -1,11 +1,11 @@
 import { Container, Back, PageName } from "./styled";
 import { useRouter } from "next/router";
 
-export function Nav() {
+export function Nav({ isHome, ...props }) {
   const router = useRouter();
   return (
     <Container>
-      <Back onClick={() => router.back()}>← Back</Back>
+      {!isHome && <Back onClick={() => router.back()}>← Back</Back>}
 
       <PageName>Home</PageName>
     </Container>

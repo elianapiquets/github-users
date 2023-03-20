@@ -18,7 +18,7 @@ export default function Home() {
         />
       </Head>
       <main>
-        <Nav />
+        <Nav isHome={true} />
         <HomeContent />
       </main>
     </>
