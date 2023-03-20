@@ -24,7 +24,7 @@ export const Back = styled.button`
   }
 `;
 
-export const PageName = styled.div`
+export const PageName = styled.a`
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;

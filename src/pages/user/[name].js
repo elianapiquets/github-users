@@ -2,8 +2,38 @@ import Head from "next/head";
 
 import Nav from "../../components/Nav";
 import { User as UserContent } from "../../components/User";
+import { Octokit } from '@octokit/rest';
 
-export default function Name() {
+
+export async function getServerSideProps({ query }) {
+
+  const octokit = new Octokit({
+    auth: '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'
+  })
+
+  const res = await octokit.request(`GET /users/${query.name}`, {
+    username: query.name,
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  })
+  
+  const data = await res.data;
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      user: data,
+    },
+  };
+}
+
+export default function Name({ user }) {
   return (
     <>
       <Head>
@@ -20,7 +50,7 @@ export default function Name() {
       </Head>
       <main>
         <Nav isHome={false} />
-        <UserContent />
+        <UserContent user={user} />
       </main>
     </>
   );

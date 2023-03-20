@@ -7,7 +7,7 @@ export function Nav({ isHome, ...props }) {
     <Container>
       {!isHome && <Back onClick={() => router.back()}>← Back</Back>}
 
-      <PageName>Home</PageName>
+      <PageName href="/">Home</PageName>
     </Container>
   );
 }

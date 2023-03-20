@@ -33,7 +33,7 @@ export const Button = styled.a`
   color: #ffffff;
 
   @media (min-width: 768px) {
-    padding: 9px 19px;
+    padding: 17px 44px;
     background: #3b89ff;
     border-radius: 3px;
     font-size: 18px;
