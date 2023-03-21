@@ -6,19 +6,15 @@ import { Octokit } from '@octokit/rest';
 
 
 export async function getServerSideProps({ query }) {
-
-  const octokit = new Octokit({
-    auth: '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'
-  })
-
-  const res = await octokit.request(`GET /users/${query.name}`, {
-    username: query.name,
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28'
-    }
-  })
   
-  const data = await res.data;
+  const res = await fetch(`https://api.github.com/users/${query.name}`, {
+    headers: {
+      Authorization: "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",
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
+  const data = await res.json();
 
   if (!data) {
     return {
